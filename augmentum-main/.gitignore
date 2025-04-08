@@ -1,6 +1,0 @@
-*.swp
-build
-.vscode
-
-# local versions of run scripts
-*_local.sh

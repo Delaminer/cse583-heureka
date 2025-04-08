@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 
 # extensions/augmentum/CMakeLists.txt
-find_package(LLVM 10.0.1 REQUIRED CONFIG)
+find_package(LLVM 18.1.8 REQUIRED CONFIG)
 include_directories(${LLVM_INCLUDE_DIRS})
 
 execute_process(
