@@ -9,7 +9,7 @@
 // still work.
 #include <cstddef>
 
-#include "internal.h"
+#include "../augmentum/internal.h"
 #include "to-instrument.h"
 
 using namespace augmentum;
@@ -383,7 +383,7 @@ static FnExtensionPoint* _Z9byValTestiiiiii10SomeStruct__extension_point__;
 
 static void _Z9byValTestiiiiii10SomeStruct__original__(int p0, int p1, int p2, int p3, int p4,
                                                        int p5, SomeStruct s) {
-  std::cout << s.str() << (p0 + p1 + p2 + p3 + p4 + p5) << "\n";
+  //std::cout << s.str() << (p0 + p1 + p2 + p3 + p4 + p5) << "\n";
 }
 
 static void _Z9byValTestiiiiii10SomeStruct__extended__(int p0, int p1, int p2, int p3, int p4,

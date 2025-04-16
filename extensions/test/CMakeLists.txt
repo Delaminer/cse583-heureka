@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 
 set(clang++ ${LLVM_DIR}/../../../bin/clang++)
+set(LIBCXX_INCLUDE_DIR ${LLVM_DIR}/../../../include/c++/v1)
 set(opt ${LLVM_DIR}/../../../bin/opt)
 set(opt-augmentum
     ${opt}
@@ -24,13 +25,13 @@ add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/uninstrumented.ll
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/to-instrument.cpp
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMAND ${clang++} -fPIE -O3 -emit-llvm -S $< -o $@
+    COMMAND ${clang++} -fPIE -O3 -emit-llvm -S ${CMAKE_CURRENT_SOURCE_DIR}/to-instrument.cpp -o ${CMAKE_CURRENT_BINARY_DIR}/uninstrumented.ll -I${LIBCXX_INCLUDE_DIR}
 )
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/uninstrumented.o
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/uninstrumented.ll
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMAND ${clang++} -fPIE -c $< -o $@
+    COMMAND ${clang++} -fPIE -c ${CMAKE_CURRENT_BINARY_DIR}/uninstrumented.ll -o ${CMAKE_CURRENT_BINARY_DIR}/uninstrumented.o
 )
 
 add_custom_command(
@@ -44,7 +45,7 @@ add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/instrumented.o
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/instrumented.ll
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMAND ${clang++} -fPIE -c $< -o $@
+    COMMAND ${clang++} -fPIE -c ${CMAKE_CURRENT_BINARY_DIR}/instrumented.ll -o ${CMAKE_CURRENT_BINARY_DIR}/instrumented.o
 )
 
 add_executable(
@@ -95,8 +96,8 @@ else()
         DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/explicit.cpp
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
         COMMAND
-            ${clang++} -fPIE -O3 -std=c++17 -emit-llvm -S
-            -I${CMAKE_SOURCE_DIR}/extensions/augmentum $< -o $@
+            ${clang++} -fPIE -O3 -std=c++17 -emit-llvm -S ${CMAKE_CURRENT_SOURCE_DIR}/explicit.cpp
+            -I${LIBCXX_INCLUDE_DIR} -o ${CMAKE_CURRENT_BINARY_DIR}/explicit.ll
     )
 endif()
 
@@ -104,7 +105,7 @@ add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/explicit.o
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/explicit.ll
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMAND ${clang++} -fPIE -c $< -o $@
+    COMMAND ${clang++} -fPIE -c ${CMAKE_CURRENT_BINARY_DIR}/explicit.ll -o ${CMAKE_CURRENT_BINARY_DIR}/explicit.o
 )
 # TODO link in extend library instead of including source here
 add_executable(
