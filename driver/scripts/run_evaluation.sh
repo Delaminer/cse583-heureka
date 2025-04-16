@@ -17,9 +17,9 @@ CPU_PER_JOB=$(expr ${CPUS} / ${JOBS})
 run_driver() {
         JOB_ID=$1
         CPUS=$2
-        WORKING_DIR=/path/to/working_dir
+        WORKING_DIR=${AUGMENTUM_HOME}
         CFG_DIR=${AUGMENTUM_HOME}/driver/config
-        CONFIG=${AUGMENTUM_HOME}/evaluation_config.json
+        CONFIG=${AUGMENTUM_HOME}/driver/config/evaluation_config.json
 
         VERBOSE="--verbose --loglevel DEBUG"
         KEEP_PROBES="--keep_probes"
