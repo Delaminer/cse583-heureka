@@ -4,16 +4,16 @@
     },
 
     "tools" : {
-        "compiler_bin"  : "../../LLVM_DIR/llvm/install/bin",
-        "cxx"           : "../../LLVM_DIR/llvm/install/bin/clang++",
-        "llvm-size"     : "../../LLVM_DIR/llvm/install/bin/llvm-size",
+        "compiler_bin"  : "../../LLVM_DIR/install/bin",
+        "cxx"           : "../../LLVM_DIR/install/bin/clang++",
+        "llvm-size"     : "../../LLVM_DIR/install/bin/llvm-size",
 
-        "augmentum_pass"    : "/path/to/augmentum/build/extensions/augmentum_llvmpass/libaugmentum_llvmpass.so",
-        "augmentum_library" : "/path/to/augmentum/build/extensions/augmentum",
-        "augmentum_headers" : "/path/to/augmentum/extensions/augmentum",
+        "augmentum_pass"    : "../native/libaugmentum_llvmpass.so",
+        "augmentum_library" : "../native/libaugmentum.so",
+        "augmentum_headers" : "../native/include",
 
-        "stl_wrapper_lib" : "/path/to/augmentum/build/tools/stlwrapper/libstlwrapper.so",
-        "fpcmp" : "/path/to/augmentum/build/tools/fpcmp/fpcmp"
+        "stl_wrapper_lib" : "../native/libaugmentum_stl_wrapper.so",
+        "fpcmp" : "../bin/fpcmp"
     },
 
     "sys_prog" : {
@@ -23,16 +23,12 @@
 
             "llvm" : {
                 "type": "llvm",
-                "build_dir": "/path/to/llvm/llvm_sysprog/",
-                "src_dir" : "/path/to/llvm/llvm-project",
+                "build_dir": "../../LLVM_DIR/build",
+                "src_dir" : "../../LLVM_DIR/llvm-project",
 
                 "instrument_module": "opt",
 
-                "initial_full_build": false,
-                "available_functions_and_types": {
-                    "function_stats" : "/path/to/auto2_dist_out/config/function_stats_relative.csv",
-                    "named_struct_stats" : "/path/to/auto2_dist_out/config/named_struct_stats_relative.csv"
-                },
+                "initial_full_build": true,
 
                 "compiler_flags": "",
                 "linker_flags": ""
@@ -47,7 +43,7 @@
 
             "POLYBENCH" : {
                 "benchmark_name": "POLYBENCH",
-                "benchmark_dir": "/path/to/augmentum/benchmarks/polybench-c-4.2.1-beta/",
+                "benchmark_dir": "../../benchmarks/polybench-c-4.2.1-beta/",
 
                 "benchmarks" : [
                     "medley/floyd-warshall",
@@ -96,7 +92,7 @@
 
             "SNU_NPB_DIRECT" : {
                 "benchmark_name": "SNU_NPB_DIRECT",
-                "benchmark_dir": "/path/to/augmentum/benchmarks/SNU_NPB/",
+                "benchmark_dir": "../../benchmarks/SNU_NPB/",
 
                 "benchmarks" : [ "FT", "MG", "CG", "LU", "BT", "IS", "EP", "SP" ],
 
@@ -114,7 +110,7 @@
 
             "SNU_NPB_BC" : {
                 "benchmark_name": "SNU_NPB_BC",
-                "benchmark_dir": "/path/to/augmentum/benchmarks/SNU_NPB/prebuild_bc/bc_out",
+                "benchmark_dir": "../../benchmarks/SNU_NPB/prebuild_bc/bc_out",
 
                 "benchmarks" : [ "FT", "MG", "CG", "LU", "BT", "IS", "EP", "SP" ],
 
@@ -132,7 +128,7 @@
 
             "SNU_NPB" : {
                 "benchmark_name": "SNU_NPB",
-                "benchmark_dir": "/path/to/augmentum/benchmarks/SNU_NPB/NPB3.3-SER-C",
+                "benchmark_dir": "../../benchmarks/SNU_NPB/NPB3.3-SER-C",
 
                 "benchmarks" : [ "FT", "MG", "CG", "LU", "BT", "IS", "EP", "SP" ],
 
@@ -150,7 +146,7 @@
 
             "LLVM_SUITE" : {
                 "benchmark_name": "LLVM_SUITE",
-                "benchmark_dir": "/path/to/augmentum/benchmarks/llvm-test",
+                "benchmark_dir": "../../benchmarks/llvm-test",
 
                 "compiler_flags" : "-Oz -fno-crash-diagnostics -DSMALL_PROBLEM_SIZE",
                 "linker_flags" : "",

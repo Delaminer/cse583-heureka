@@ -1,0 +1,8 @@
+application_id;module;function;path;prior;target_range
+MINIMIZED_POLYBENCH_bicg;llvm/lib/Analysis/ValueTracking.cpp;_ZNK4llvm5Value10getValueIDEv;Z.L.T-i16;Integer Scale Prior;1,0
+MINIMIZED_POLYBENCH_bicg;llvm/lib/Analysis/ValueTracking.cpp;_ZNK4llvm5Value10getValueIDEv;Z.T-i32;Integer Scale Prior;1,0
+MINIMIZED_POLYBENCH_bicg;llvm/lib/Analysis/ValueTracking.cpp;_ZNK4llvm5Value10getValueIDEv;Z.L.L.T-i8;Integer Scale Prior;1,0
+MINIMIZED_POLYBENCH_bicg;llvm/lib/Analysis/GuardUtils.cpp;_ZN4llvm12PatternMatch17IntrinsicID_matchC2Ej;A0.D.S0.L.L.T-i8;All Integers Prior;NA
+MINIMIZED_POLYBENCH_bicg;llvm/lib/Analysis/GuardUtils.cpp;_ZN4llvm12PatternMatch17IntrinsicID_matchC2Ej;A0.D.S0.L.T-i16;All Integers Prior;NA
+MINIMIZED_POLYBENCH_bicg;llvm/lib/Analysis/GuardUtils.cpp;_ZN4llvm12PatternMatch17IntrinsicID_matchC2Ej;A0.D.S0.T-i32;All Integers Prior;NA
+MINIMIZED_POLYBENCH_bicg;llvm/lib/Transforms/Scalar/EarlyCSE.cpp;_ZNK4llvm8Function14getIntrinsicIDEv;Z.L.L.T-i8;All Integers Prior;NA

@@ -6,7 +6,7 @@
 
 AUGMENTUM_HOME=`git rev-parse --show-toplevel`
 
-WORKING_DIR=/path/to/working_dir
+WORKING_DIR=${AUGMENTUM_HOME}/output
 CFG_DIR=${AUGMENTUM_HOME}/driver/config
 
 CONFIG=${CFG_DIR}/evaluation_config.json
