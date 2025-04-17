@@ -51,7 +51,7 @@ Node* namedStructTypeTest(Node* head, int data) {
 int unknownTypeTest(arrStruct a) { return a.ptr[a.i]; }
 
 void byValTest(int p0, int p1, int p2, int p3, int p4, int p5, SomeStruct s) {
-  std::cout << s.str() << (p0 + p1 + p2 + p3 + p4 + p5) << "\n";
+  //std::cout << s.str() << (p0 + p1 + p2 + p3 + p4 + p5) << "\n";
 }
 
 void arrayTypeTest(Container* c) {
